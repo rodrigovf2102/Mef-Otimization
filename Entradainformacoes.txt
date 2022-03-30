@@ -1,0 +1,23 @@
+233  				!numero de elementos do modelo numerico
+2					!caso da otimizacao (1-individual, 2-total)
+1				!quantidade de menores residuos a serem mostrados
+1					!valor das frequencias naturais experimentais
+1
+1
+1
+1
+1
+1
+1
+2
+2
+2
+2
+2
+2
+2
+3
+4
+5
+6
+7
