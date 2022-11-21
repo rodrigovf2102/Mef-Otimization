@@ -1,14 +1,14 @@
 *####################################################################
 *
-*	Programacao: Claudio Jose Martins DEC/CEFET-MG
-*	e-mail: smc.engenharia@gmail.com
+*	Programacao: Claudio Jose Martins DEC/CEFET-MG, Rodrigo Vieira Fonseca, PPGEC/CEFET-MG
+*	e-mail: smc.engenharia@gmail.com, rodrigovf2102@gmail.com
 *
 *------------------------------------------------------------------------------- 
 *       
-*	Programa para determinaÁ„o dos par‚metros modais de porticos 3D lineares
+*	Programa para determina√ß√£o dos par√¢metros modais de porticos 3D lineares
 *
-*		- entrada do pÛrtico por coordenadas
-*		- e possÌvel subdividir superelementos
+*		- entrada do p√≥rtico por coordenadas
+*		- e poss√≠vel subdividir superelementos
 *     
 *------------------------------------------------------------------------------- 
 *------------------------------------------------------------------------------- 
@@ -22,14 +22,14 @@ cc	use MSIMSL
 	integer nde !numero de divisoes dos superelementos
 	integer ncn,nce !numero de nos com forcas e	com vinculacoes prescritas
 	integer nne,ngn,nge
-	integer nd !numero de dimensıes (nd=3, X,Y,Z) 
-	integer nvar !numero de variaÁ„o nas propriedades 
+	integer nd !numero de dimens√µes (nd=3, X,Y,Z) 
+	integer nvar !numero de varia√ß√£o nas propriedades 
 	integer nvarA,nvarI2,nvarI3,nvarIt,nvarE,nvarG,nvarro
 	integer nvarrigx,nvarrigy,nvarrigz,nvarrigrx,nvarrigry,nvarrigrz
 	integer nvarfx,nvarfy,nvarfz,nvarmx,nvarmy,nvarmz
 	integer nvarfex
 	integer nvarexe,nvarkmax !numero de variacoes a serem executadas
-	integer isolve,isolvee !1-linear est·tico 2-modal,  
+	integer isolve,isolvee !1-linear est√°tico 2-modal,  
 	integer nmode !numero de modos a serem plotados 
 	integer i,j,ie,ise,ios,ivar, iii, jjj,ll,iee,jj,ii,ivm,j1,j2,j11 
 	integer k,kk,ncol,nlin,zz,z,vv,i5,i4,i6 !var. aux. 
@@ -49,7 +49,7 @@ cc	use MSIMSL
 	integer casoprint
 *
 	integer, allocatable :: econ(:,:)!conectividade dos elementos
-	integer, allocatable :: norig(:),nofex(:) !nos com forÁas e molas
+	integer, allocatable :: norig(:),nofex(:) !nos com for√ßas e molas
 	integer, allocatable :: scon(:,:)!conectividade dos superelementos
 	real*8, allocatable :: coord(:,:)!cordenadas espaciais dos nos
 	real*8, allocatable :: pcoord(:,:)!cordenadas espaciais dos nos principais
@@ -64,7 +64,7 @@ cc	use MSIMSL
       real*8, allocatable :: bsvd(:),csvd(:),tsvd(:) !vetores aux svd
       real*8, allocatable :: s(:) !aulovalores SVD
 	real*8, allocatable :: fe(:)
-	real*8, allocatable :: fn(:,:), oti(:,:)	 !matriz de informaÁoes modais
+	real*8, allocatable :: fn(:,:), oti(:,:)	 !matriz de informa√ßoes modais
 	double complex, allocatable :: u(:,:),v(:,:) !autovetores SVD
 	double complex, allocatable :: modal(:,:) !matriz modal SVD
 	real*8, allocatable :: mim(:,:)	!residuo caso1
@@ -141,7 +141,7 @@ cc	use MSIMSL
 	write(iout,*) '  Numero de variacoes da propriedade ro: ' ,nvarro
 	write(iout,*) '  Numero de variacoes das molas: ' ,
      1(nvarrigx*nvarrigy*nvarrigz*nvarrigrx*nvarrigry*nvarrigrz)**nce
-	write(iout,*) '  Numero de variacoes das forÁas :', 
+	write(iout,*) '  Numero de variacoes das for√ßas :', 
      1(nvarfx*nvarfy*nvarfz*nvarmx*nvarmy*nvarmz)**ncn
 
 	if(msim.eq.0) then
@@ -185,7 +185,7 @@ cc	use MSIMSL
 
 	nvar=varmolas*vara*vari2*vari3*vare*varro
 
-	write(iout,*) '  Numero de combinaÁoes :',nvar
+	write(iout,*) '  Numero de combina√ßoes :',nvar
 	read(ient,*) isolve
  	write(iout,*) '  Tipo de analise:',isolve 
 	read(ient,*) nmode
@@ -527,7 +527,7 @@ c				write(*,*) '	  ......matriz elemento',ie
 		x=0
 		y=0
 		do i=1,(nmode*ne),ne
-			ii=ii+1 !ii È a linha das frequencias experi.	 						 
+			ii=ii+1 !ii √© a linha das frequencias experi.	 						 
 			x=(fe(ii)-fn(i,3))/fe(ii)
  			if(x.lt.0) x=-x
 			res = x + res
@@ -542,7 +542,7 @@ c				write(*,*) '	  ......matriz elemento',ie
 		zxc=0
 	endif
 
-	!rotinas de otimizaÁ„o (pulo de analises modais de alto residuo)
+	!rotinas de otimiza√ß√£o (pulo de analises modais de alto residuo)
 
 		i7=res-resant
 		resant=res
@@ -564,7 +564,7 @@ c				write(*,*) '	  ......matriz elemento',ie
 				enddo
 		endif
 	
-	!rotinas de otimizaÁ„o (pulo de analises modais de alto residuo)
+	!rotinas de otimiza√ß√£o (pulo de analises modais de alto residuo)
 		if(res.gt.(0.20*fnat)) then
 			aux3=1
 			do zz=1,(nvarkmax/3)
@@ -640,7 +640,7 @@ c				write(*,*) '	  ......matriz elemento',ie
 
 	do iii=1,noti
 	!impressao de resultado no arquivo executavel (case(2))
-	write(*,*)'Rotinas de reduÁ„o do Custo Comp. foram executadas'
+	write(*,*)'Rotinas de redu√ß√£o do Custo Comp. foram executadas'
 	1,i5,i4
 	write(*,*)'Segue abaixo as propriedades do',iii,'menor residuo'
 	write(*,74) minimo(iii),var(iii)
@@ -803,7 +803,7 @@ c				write(*,*) '	  ......matriz elemento',ie
 
  
 
-*	leitura par‚metros globais
+*	leitura par√¢metros globais
 	write(iout,*) 
 	write(iout,*) '  Coordenadas (x,y,z) dos nos principais'
 	do i=1,nnp
