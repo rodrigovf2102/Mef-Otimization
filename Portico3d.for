@@ -3,8 +3,7 @@
 *	Programa para determinação dos parâmetros modais de porticos 3D lineares
 *
 *		- entrada do pórtico por coordenadas
-*		- e possível subdividir superelementos
-*     
+*		
 *------------------------------------------------------------------------------- 
 *------------------------------------------------------------------------------- 
 	program Portico3D
