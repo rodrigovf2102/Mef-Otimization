@@ -1,8 +1,3 @@
-*####################################################################
-*
-*	Programacao: Claudio Jose Martins DEC/CEFET-MG, Rodrigo Vieira Fonseca, PPGEC/CEFET-MG
-*	e-mail: smc.engenharia@gmail.com, rodrigovf2102@gmail.com
-*
 *------------------------------------------------------------------------------- 
 *       
 *	Programa para determinação dos parâmetros modais de porticos 3D lineares
